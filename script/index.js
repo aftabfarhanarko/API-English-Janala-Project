@@ -4,31 +4,60 @@ const loadData = () => {
     .then((data) => displayLesson(data.data));
 };
 
+const lavelWorld = (id) => {
+  const url = `https://openapi.programming-hero.com/api/level/${id}`;
+  fetch(url)
+    .then((res) => res.json())
+    .then((data) => displayLavelWord(data.data));
+};
+
+const displayLavelWord = (word) => {
+  const woedCointner = document.getElementById("wordCointaner");
+  woedCointner.innerHTML = "";
+
+  if(word.length == 0){
+   woedCointner.innerHTML = `
+    <div class="text-center col-span-full space-y-4 py-10">
+             <img class="mx-auto" src="./assets/alert-error.png" alt="">
+             <p class="  font-semibold text-gray-400">এই Lesson এ এখনো কোন Vocabulary যুক্ত করা হয়নি।</p>
+             <h1 class="text-4xl font-semibold">নেক্সট Lesson এ যান</h1>
+        </div>
+   `
+    return ;
+  }
+
+  word.forEach((wordes) => {
+      console.log(wordes)
+    const card = document.createElement("div");
+    card.innerHTML = `
+      <div class="font-sans bg-white p-5 text-center rounded-lg shadow-lg  py-6 px-6 space-y-4">
+           <h2 class="text-2xl font-bold">${wordes.word}</h2>
+           <p class=" text-[18px] font-semibold">Meaning /Pronounciation</p>
+           <h2 class=" text-2xl font-bold bangla-font">"${wordes.meaning} /${wordes.pronunciation}"</h2>
+           <div class="flex justify-between items-center ">
+                  <button class="btn bg-sky-100"><i class="fa-solid fa-circle-info"></i>    </button>
+                  <button class="btn bg-sky-100"><i class="fa-solid fa-volume-high"></i>   </button>
+           </div>
+       </div>
+    `;
+    woedCointner.append(card);
+  });
+};
+
 const displayLesson = (lessone) => {
-  console.log(lessone);
   // 1 Get The COintnar
   const cointanar = document.getElementById("leson-cointnar");
   cointanar.innerHTML = "";
-// : 
-// id
-// : 
-// 102
-// lessonName
-// : 
-// "Everyday Words"
-// level_no
-// : 
-// 2
 
   lessone.forEach((element) => {
     const lavelBtn = document.createElement("div");
     lavelBtn.innerHTML = `
         <div>
-        <button class="btn btn-outline btn-primary">
+        <button onclick="lavelWorld(${element.level_no})" class="btn btn-outline btn-primary">
          <i class="fa-solid fa-book-open-reader"></i>Lessone - ${element.level_no}</button> 
         </div>
         `;
-        cointanar.append(lavelBtn);
+    cointanar.append(lavelBtn);
   });
 };
 loadData();

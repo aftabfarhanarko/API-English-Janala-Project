@@ -14,16 +14,22 @@
     <link rel="shortcut icon" href="./assets/logo.png" type="image/x-icon">
     <link rel="stylesheet" href="./style/style.css">
 
-
+ <!-- font integration  -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
 
     <!-- tailwind+daisyui -->
     <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 </head>
 
-<body class="poppins-thin">
+<body>
 
-    <header>
+    <header class="poppins-thin ">
         <nav>
             <div class="navbar bg-base-100 shadow-sm">
                 <div class="navbar-start">
@@ -41,12 +47,10 @@
                                 <a href=""><i class="fa-solid fa-circle-question"></i>FAQ</a>
                             </li>
                             <li>
-                                <a href=""><i
-                                    class="fa-solid fa-book-open-reader"></i></i>Book</a>
+                                <a href=""><i class="fa-solid fa-book-open-reader"></i></i>Book</a>
                             </li>
                             <li>
-                                <a href=""><i
-                                    class="fa-solid fa-arrow-right-from-bracket"></i>LogOut</a>
+                                <a href=""><i class="fa-solid fa-arrow-right-from-bracket"></i>LogOut</a>
                             </li>
                         </ul>
                     </div>
@@ -75,7 +79,7 @@
             </div>
         </nav>
     </header>
-    <section class="flex justify-between items-center w-11/12 mx-auto py-10 flex-col-reverse md:flex-row ">
+    <section class=" flex justify-between items-center w-11/12 mx-auto py-19 flex-col-reverse md:flex-row ">
         <div class="container flex-1 text-center md:text-left">
             <h2 class="text-3xl font-bold"><span class="text-sky-400">English</span> is Easy!!</h2>
             <p class="bangla-font mt-5 mb-10">আজ থেকেই আপনার ভাষা শেখার যাত্রা শুরু করুন। আপনি যদি নতুন হন অথবা
@@ -108,13 +112,20 @@
     </section>
 
 
-    <section class="text-center">
-         <h2 class="text-5xl font-bold text-center"><span class="text-sky-400">Let's</span> Learn Vocabularies</h2>
+    <section class="text-center poppins-thin ">
+        <h2 class="text-4xl font-bold text-center"><span class="text-sky-400">Let's</span> Learn Vocabularies</h2>
 
-         <div id="leson-cointnar" class="flex gap-5 mt-10 flex-wrap justify-center"></div>
+        <div id="leson-cointnar" class="flex gap-5 mt-10 flex-wrap justify-center"></div>
     </section>
 
+    <section id="wordCointaner" class="bg-gray-100 w-11/12 mx-auto my-10 rounded-lg grid grid-cols-3 p-10 gap-10">
+        <div class="text-center col-span-full space-y-4 py-10">
+             <p class="  font-semibold text-gray-400">আপনি এখনো কোন Lesson Select করেন ন</p>
+             <h1 class="text-4xl font-semibold">একটি Lesson Select করুন।</h1>
+        </div>
+    </section>
 
+    
     <!-- JS Folder add -->
     <script src="./script/index.js"></script>
 </body>
