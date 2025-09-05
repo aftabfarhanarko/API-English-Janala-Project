@@ -4,11 +4,21 @@ const loadData = () => {
     .then((data) => displayLesson(data.data));
 };
 
+const btns =() =>{
+    const btn  = document.querySelectorAll(".lesson-btn")
+    btn.forEach(element => element.classList.remove("active"))
+}
 const lavelWorld = (id) => {
   const url = `https://openapi.programming-hero.com/api/level/${id}`;
   fetch(url)
     .then((res) => res.json())
-    .then((data) => displayLavelWord(data.data));
+    .then((data) => {
+        btns();
+        const click = document.getElementById(`click-btn-${id}`);
+        click.classList.add("active");
+        click.remove = "active"
+        displayLavelWord(data.data)
+    })
 };
 
 const displayLavelWord = (word) => {
@@ -27,13 +37,12 @@ const displayLavelWord = (word) => {
   }
 
   word.forEach((wordes) => {
-      console.log(wordes)
     const card = document.createElement("div");
     card.innerHTML = `
       <div class="font-sans bg-white p-5 text-center rounded-lg shadow-lg  py-6 px-6 space-y-4">
-           <h2 class="text-2xl font-bold">${wordes.word}</h2>
+           <h2 class="text-2xl font-bold">${wordes.word ? wordes.word : "Word Not Found"}</h2>
            <p class=" text-[18px] font-semibold">Meaning /Pronounciation</p>
-           <h2 class=" text-2xl font-bold bangla-font">"${wordes.meaning} /${wordes.pronunciation}"</h2>
+           <h2 class=" text-2xl font-bold bangla-font">"${wordes.meaning ? wordes.meaning : " Not Fount"} /${wordes.pronunciation ? wordes.pronunciation : "Not Found"}"</h2>
            <div class="flex justify-between items-center ">
                   <button class="btn bg-sky-100"><i class="fa-solid fa-circle-info"></i>    </button>
                   <button class="btn bg-sky-100"><i class="fa-solid fa-volume-high"></i>   </button>
@@ -53,7 +62,7 @@ const displayLesson = (lessone) => {
     const lavelBtn = document.createElement("div");
     lavelBtn.innerHTML = `
         <div>
-        <button onclick="lavelWorld(${element.level_no})" class="btn btn-outline btn-primary">
+        <button id="click-btn-${element.level_no}" onclick="lavelWorld(${element.level_no})" class="btn btn-outline btn-primary lesson-btn">
          <i class="fa-solid fa-book-open-reader"></i>Lessone - ${element.level_no}</button> 
         </div>
         `;
