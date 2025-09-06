@@ -1,19 +1,26 @@
-const creatElement = (arr) =>{
-  const bodyHrml = arr.map(element =>`
+const creatElement = (arr) => {
+  const bodyHrml = arr.map(
+    (element) => `
      <span> <button class="btn">${element}</button></span>
-    ` )
-   return (bodyHrml.join(" "));
-}
+    `
+  );
+  return bodyHrml.join(" ");
+};
 
-const spinner = (sta) =>{
-  if(sta == true){
+function pronounceWord(word) {
+  const utterance = new SpeechSynthesisUtterance(word);
+  utterance.lang = "en-EN"; // English
+  window.speechSynthesis.speak(utterance);
+}
+const spinner = (sta) => {
+  if (sta == true) {
     document.getElementById("spiners").classList.remove("hidden");
     document.getElementById("wordCointaner").classList.add("hidden");
-  }else{
-     document.getElementById("wordCointaner").classList.remove("hidden");
+  } else {
+    document.getElementById("wordCointaner").classList.remove("hidden");
     document.getElementById("spiners").classList.add("hidden");
   }
-}
+};
 
 const loadData = () => {
   fetch("https://openapi.programming-hero.com/api/levels/all")
@@ -26,7 +33,7 @@ const btns = () => {
   btn.forEach((element) => element.classList.remove("active"));
 };
 const lavelWorld = (id) => {
-    spinner(true);
+  spinner(true);
   const url = `https://openapi.programming-hero.com/api/level/${id}`;
   fetch(url)
     .then((res) => res.json())
@@ -50,11 +57,17 @@ const wrdDetilsDisplay = (word) => {
   const coinModal = document.getElementById("modal-cointnar");
   coinModal.innerHTML = `
                 <div class="text-2xl font-bold">
-                    <h2>${word.word} (<i class="fa-solid fa-microphone-lines"></i> :${word.meaning})</h2>
+                    <h2>${
+                      word.word
+                    } (<i class="fa-solid fa-microphone-lines"></i> : ${
+    word.meaning
+  })</h2>
                 </div>
                 <div class="">
                     <h2 class="font-bold text-xl">Meaning</h2>
-                    <p class="font-medium">${word.meaning ?word.meaning : "অর্থ পাওয়া যায়নি" }</p>
+                    <p class="font-medium">${
+                      word.meaning ? word.meaning : "অর্থ পাওয়া যায়নি"
+                    }</p>
                 </div>
                 <div class="">
                     <h2 class="font-bold text-xl">Example</h2>
@@ -94,19 +107,22 @@ const displayLavelWord = (word) => {
            <p class=" text-[18px] font-semibold">Meaning /Pronounciation</p>
            <h2 class=" text-2xl font-bold bangla-font">"${
              wordes.meaning ? wordes.meaning : "অর্থ পাওয়া যায়নি"
-           } /${wordes.pronunciation ? wordes.pronunciation : "অর্থ পাওয়া যায়নি"}"</h2>
+           } /${
+      wordes.pronunciation ? wordes.pronunciation : "অর্থ পাওয়া যায়নি"
+    }"</h2>
            <div class="flex justify-between items-center ">
                   <button onclick="loadWord(${
                     wordes.id
                   })" class="btn bg-sky-100"><i class="fa-solid fa-circle-info"></i>    </button>
-                  <button class="btn bg-sky-100"><i class="fa-solid fa-volume-high"></i>   </button>
+                  <button onclick="pronounceWord('${
+                    wordes.word
+                  }')" class="btn bg-sky-100"><i class="fa-solid fa-volume-high"></i>   </button>
            </div>
        </div>
     `;
     woedCointner.append(card);
   });
   spinner(false);
-  
 };
 
 const displayLesson = (lessone) => {
@@ -125,3 +141,24 @@ const displayLesson = (lessone) => {
   });
 };
 loadData();
+
+// Add Evient Lisenar
+
+document.getElementById("btn-clickSearch").addEventListener("click", () => {
+  // removeActive();
+  const input = document.getElementById("input-search");
+  const searchValue = input.value.trim().toLowerCase();
+  console.log(searchValue);
+
+  fetch("https://openapi.programming-hero.com/api/words/all")
+    .then((res) => res.json())
+    .then((data) => {
+      const allWords = data.data;
+      console.log(allWords);
+      const filterWords = allWords.filter((word) =>
+        word.word.toLowerCase().includes(searchValue)
+      );
+
+      displayLavelWord(filterWords);
+    });
+});
