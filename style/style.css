@@ -1,11 +1,9 @@
-* {
-  font-family: "Poppins", sans-serif;
-}
-.bangla-font {
-  font-family: "Hind Siliguri", sans-serif;
-}
+
 .active {
   background-color: #422ad5;
   color: white;
 }
 
+body {
+  font-family: 'Hind Siliguri', sans-serif;
+}

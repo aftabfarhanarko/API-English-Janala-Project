@@ -14,12 +14,11 @@
     <link rel="shortcut icon" href="./assets/logo.png" type="image/x-icon">
     <link rel="stylesheet" href="./style/style.css">
 
-    <!-- font integration  -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-        href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
-        rel="stylesheet" />
+    <!-- Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
 
     <!-- tailwind+daisyui -->
     <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
@@ -80,8 +79,8 @@
     </header>
     <section class=" flex justify-between items-center w-11/12 mx-auto py-19 flex-col-reverse md:flex-row ">
         <div class="container flex-1 text-center md:text-left">
-            <h2 class="text-3xl font-bold"><span class="text-sky-400">English</span> is Easy!!</h2>
-            <p class="bangla-font mt-5 mb-10">আজ থেকেই আপনার ভাষা শেখার যাত্রা শুরু করুন। আপনি যদি নতুন হন অথবা
+            <h2 class="text-4xl font-bold"><span class="text-sky-400">English</span> is Easy!!</h2>
+            <p class="bangla-font mt-5 mb-10 max-w-[500px]">আজ থেকেই আপনার ভাষা শেখার যাত্রা শুরু করুন। আপনি যদি নতুন হন অথবা
                 আপনার দক্ষতা বাড়াতে চান, আমাদের Interactive Lessons আপনাকে নিয়ে যাবে অন্য একটি Level এ</p>
             <input type="text" placeholder="Enter Your Name" class="input text-black mb-5" /> <br>
             <label class="input validator">
@@ -117,9 +116,9 @@
         <div id="leson-cointnar" class="flex gap-5 mt-10 flex-wrap justify-center"></div>
     </section>
 
-    <section id="spiners" class="items-center py-20 flex justify-center hidden">
-        <span class="loading loading-spinner loading-xl"></span>
-     </section>     
+    <section id="spiners" class="flex items-center py-20  justify-center hidden">
+        <span class="loading loading-bars loading-xl"></span>
+    </section>
 
     <section id="wordCointaner"
         class="bg-gray-100 w-11/12 mx-auto my-10 rounded-lg grid grid-cols-1 md:grid-cols-3 p-10 gap-10">
@@ -129,12 +128,12 @@
         </div>
     </section>
 
-     
+
     <!-- Modal -->
     <dialog id="my_modal" class="modal modal-bottom sm:modal-middle">
         <div class="modal-box">
             <div id="modal-cointnar" class=" space-y-5">
-             
+
             </div>
 
             <div class="modal-action">

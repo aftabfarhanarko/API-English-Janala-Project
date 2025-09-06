@@ -11,7 +11,7 @@ const spinner = (sta) =>{
     document.getElementById("wordCointaner").classList.add("hidden");
   }else{
      document.getElementById("wordCointaner").classList.remove("hidden");
-    document.getElementById(" spiners").classList.add("hidden");
+    document.getElementById("spiners").classList.add("hidden");
   }
 }
 
@@ -69,7 +69,6 @@ const wrdDetilsDisplay = (word) => {
 };
 
 const displayLavelWord = (word) => {
-  spinner(true);
   const woedCointner = document.getElementById("wordCointaner");
   woedCointner.innerHTML = "";
 
